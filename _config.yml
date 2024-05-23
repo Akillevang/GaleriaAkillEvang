@@ -1,0 +1,16 @@
+# Configurações do Jekyll
+
+# Título do site
+title: Galeria Akill Evang
+
+# Descrição do site
+description: Uma espaço para expor obras e ideias em desenvolvimento, experiêncie esta visita conhecendo mais sobre o Artista Akill Evangelista. 
+
+# URL base do site (opcional)
+# url: "https://GaleriaAkillEvangelista.com"
+
+# Diretório de destino para a construção do site
+destination: docs
+
+# Configurações de formatação
+markdown: kramdown

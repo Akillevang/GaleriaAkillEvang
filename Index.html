@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Página Inicial</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'hijrnotes', cursive;
+            color: white;
+            background: linear-gradient(to bottom, #000000, #092d4b);
+        }
+
+        #banner {
+            background-color: black;
+            text-align: left;
+            margin-bottom: 20px;
+            position: relative;
+            width: 100%;
+            height: auto;
+            max-height: 398px;
+            overflow: hidden;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        #banner img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #banner .banner-text {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            color: white;
+            font-family: 'hijrnotes', cursive;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #menu {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .menu-button {
+            display: inline-block;
+            width: 180px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 5px;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s, border-radius 0.3s;
+            position: relative;
+        }
+
+        .menu-button:hover,
+        .menu-button:focus {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.4);
+            padding: 10px;
+            border-radius: 0 0 10px 10px;
+            z-index: 2;
+            text-align: left;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: -5px;
+        }
+
+        .submenu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 5px 0;
+        }
+
+        .menu-button:hover .submenu,
+        .submenu:hover {
+            display: block;
+        }
+
+        .menu-button.has-submenu:hover {
+            border-radius: 10px 10px 0 0;
+        }
+
+        .menu-button.has-submenu:hover .submenu {
+            border-radius: 0 0 10px 10px;
+        }
+
+        #content {
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            margin-top: 150px;
+        }
+
+        .section-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .text-section {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 20px;
+        }
+
+        .video-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .video-section iframe {
+            width: 100%;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #FFA07A;
+            font-size: 110%;
+        }
+
+        #banner2 {
+            background-color: black;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            position: relative;
+            width: calc(100% - 40px);
+            height: auto;
+            max-height: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #banner2 img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #banner2 .banner-text {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            color: white;
+            font-family: 'hijrnotes', cursive;
+            font-size: 18px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #banner3 {
+            background-color: black;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            position: relative;
+            width: 50%;
+            height: auto;
+            max-height: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #banner3 img {
+            max-width: 100%;
+            height: auto;
+            width: 100%;
+        }
+
+        #banner3 .banner-text {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            color: white;
+            font-family: 'hijrnotes', cursive;
+            font-size: 18px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #banner4-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        #banner4-left,
+        #banner4-middle,
+        #banner4-right {
+            background-color: black;
+            text-align: center;
+            padding: 5px;
+            position: relative;
+            width: 25%;
+            height: auto;
+            max-height: 25%;
+            overflow: hidden;
+        }
+
+        #banner4-left img,
+        #banner4-middle img,
+        #banner4-right img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #banner4-left .banner-text,
+        #banner4-middle .banner-text,
+        #banner4-right .banner-text {
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            color: white;
+            font-family: 'hijrnotes', cursive;
+            font-size: 14px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        footer {
+            background-color: #0d3e69;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            clear: both;
+        }
+
+        footer a {
+            color: #FFA07A;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        #small-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #small-icon img {
+            width: 60%;
+            height: auto;
+        }
+
+        #small-icon:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .menu-button {
+                width: 100%;
+            }
+            .text-section,
+            .video-section {
+                flex: 1 0 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            #banner2,
+            #banner3 {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Banner -->
+<div id="banner">
+    <img src="https://lh3.googleusercontent.com/pw/AP1GczMaKYQNnKyL5XOAmG-YGYeBzNL8YP4EMtY1eWn4VB18nvVnyD-NZkDUmJ7zC81eCM463NJ6uqR_KqpKh8LASWxY3hULCoGPe_j5f0bUU5w4jbKwaJd6U-oWUjZk7bsAm8Nnt-sA4LqtKa7o1UYFoiWz=w949-h569-s-no-gm?authuser=2" alt="Banner Inicial">
+    <div class="banner-text">Galeria Akill Evang</div>
+</div>
+
+<!-- Menu -->
+<div id="menu">
+    <a href="pagina-inicial.html" class="menu-button">Início</a>
+    <div class="menu-button has-submenu">
+        Artes
+        <div class="submenu">
+            <a href="artes-desenhos.html">Desenhos</a>
+            <a href="artes-ilustracoes.html">Ilustrações</a>
+            <a href="artes-experiencias.html">Experiências</a>
+        </div>
+    </div>
+    <a href="projetos.html" class="menu-button">Projetos</a>
+    <div class="menu-button has-submenu">
+        Livro
+        <div class="submenu">
+            <a href="livro-milly.html">Milly</a>
+        </div>
+    </div>
+    <a href="sobre.html" class="menu-button">Sobre</a>
+</div>
+
+<!-- Conteúdo Principal -->
+<div id="content">
+    <!-- Seção "Bem-vindo à minha página" e vídeo -->
+    <div class="section-flex">
+        <div class="text-section">
+            <h2>Bem-vindo à minha página</h2>
+            <p>Bem-vindo ao meu espaço digital, onde a arte se torna uma experiência transformadora. Meu nome é Akill Evangelista, e meu objetivo com este site é criar uma nova forma de interação através das minhas obras, propondo novos conteúdos e provocando uma opinião sincera do meu público.</p>
+        </div>
+        <div class="video-section">
+            <iframe id="existing-iframe-example" width="560" height="315" src="https://www.youtube.com/embed/DfpnTGbfriI?si=uhkwZoEmw-x10KXr&autoplay=1&mute=1&loop=1&playlist=DfpnTGbfriI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Banner Secundário -->
+    <div id="banner2">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPjvBLeguFbqoB7OIARBgLBbSBuHdpkQD1O2jG5K1QbVghCp5tLeJshccOF4uP9SGaPCH6K0BcljRDSrYX8oKw7ef-iOXzU_u-PqVq2-pk71zDFbZXJDJcozaAizhYBOhkJEOvAE09xqlJHllAwV2Os=w1545-h928-s-no-gm?authuser=2" alt="Banner 2">
+        <div class="banner-text">Milly Oráculo</div>
+    </div>
+
+    <!-- Texto adicional sobre a criação do Livro Milly -->
+    <div class="section" style="margin-bottom: 60px;">
+        <h2>Livro Milly - Início de sua criação</h2>
+        <p>Tudo começou em um dia de experimentação para desenvolver meu portfólio. Na minha busca por referências, comecei a pesquisar alguns mais elaborados, que tinham uma história ao redor enquanto apresentavam o artista e suas obras. Seguindo esta inspiração, inicio a história de Son e Milly, como figuras de um portfólio, que no início seriam apenas para compor e apresentar minhas artes, porém comecei a me apegar aos personagens e desenvolvi um enredo para que ambos possam viver realmente na minha mente. Gostei de como a história estava me envolvendo e causando algo diferente em minha forma de escrever.</p>
+        <p>Tenho dislexia, e por isso me senti caminhando pelas palavras de uma maneira nunca feita antes. Então espero que através dessa minha história, possa causar algo mágico em cada um que se interessar a conhecer.</p>
+        <p>Um resumo rápido sobre a história: ela se passa em uma era desconhecida, onde as pessoas precisam enfrentar seus medos e ainda combater monstros da escuridão. Após uma guerra, o cenário destruído dos vilarejos compõe a região de Akantigo. Nossos queridos personagens viverão para contar sua história, então não perca e venha conhecer!</p>
+    </div>
+
+    <!-- Banner 3 -->
+    <div id="banner3">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMoJseMbMTet3_obroE9qvZk71dQowFHBeZie0aTyPf0Q1rJpg_vUP1MfV8nJI50vSJM611sNQJtWUx_sWRqJzh9WhU6THL41r93NBC2pCiFLKPlT8dfG1pjSxOis03os05l8OskGKJqtdCbqWugFVE=w1546-h928-s-no-gm?authuser=2; background-position: top; background-size: auto 50%;" alt="Banner 3">
+        <div class="banner-text">Ilustração de um novo mundo</div>
+    </div>
+
+    <!-- Objetivo do Site -->
+    <div class="section" style="margin-bottom: 60px;">
+        <h2>Objetivo do Site</h2>
+        <p>Aqui, você encontrará uma coleção de minhas artes críticas, pensadas para estimular uma resposta sincera e emocional. A estética do site reflete essa filosofia.</p>
+    </div>
+
+    <!-- Público Alvo -->
+    <div class="section" style="margin-bottom: 60px;">
+        <h2>Público Alvo</h2>
+        <p>Minha arte ressoa especialmente com jovens de 18 a 30 anos, incluindo nerds, estudantes e aqueles que buscam novas perspectivas e experiências visuais.</p>
+    </div>
+
+    <!-- Mensagem Central -->
+    <div class="section" style="margin-bottom: 60px;">
+        <h2>Mensagem Central</h2>
+        <p>O que você sente ao apreciar a minha arte? Quero saber como minhas obras tocam você, quais emoções despertam e que pensamentos provocam. Compartilhe suas experiências e deixe que a arte fale por si mesma.</p>
+    </div>
+
+    <!-- Banner 4 - Divisão em três imagens -->
+    <div id="banner4-container">
+        <div id="banner4-left">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczMz0wBwbj09SiZJFFsvejbqCVBQZ6_IycyGwoCdAowwQ6H-_Mhw2NWmxQ6iZxyNMWeRZHHXI__KAbXnQW9HxhbRy5-EMU-ZzdGZqi8ryATZ-JLUHZ-m25EBPZj_oHYEL7ltM6wg7V2v8wkbToXi-BCb=w556-h928-s-no-gm?authuser=2" alt="Banner 4 - Esquerda">
+            <div class="banner-text">me encontro aos 70</div>
+        </div>
+        <div id="banner4-middle">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczOzwMIW_YDqvYgqIDS-Qs4gB7_ESlcOYtmhaOVbekUfVaBLKNA9upqrWehu-yZzSMzDCPpa5onQCW2ChrN2ADiHaFodsvJF_7bN-Xz3Zo0Kwn8V9wpcgOsN-_A4zwKM2iAnJbkXd91MeKHy7cNziPWS=w556-h928-s-no-gm?authuser=2" alt="Banner 4 - Meio">
+            <div class="banner-text">Pão nosso de cada dia</div>
+        </div>
+        <div id="banner4-right">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczPAWVgBKKxxKEP5Wtlv3hIdAPb2OiHczRzD8SuwZx0T1xqnAJ3i070vF6qZlDB3VsuXjp3SZnx2BU4etU77ZQW5yFKwbwTn4rPZvLe1rB2MUGCOS2YVxS3Yeo1VasNmD3sYBCcpRevHUv1oHwl66lqu=w556-h928-s-no-gm?authuser=2" alt="Banner 4 - Direita">
+            <div class="banner-text">Menino e a Pesca</div>
+        </div>
+    </div>
+
+<!-- Qualificações -->
+<div class="section" style="margin-bottom: 60px;">
+    <h2>Qualificações</h2>
+    <p>Sou um artista autodidata, mas minha formação se estendeu por vários renomados centros de aprendizado. Na adolescência, frequentei o ateliê do artista Fernando Barbosa e estudei artes gráficas e digitais na escola SAGA. Aprofundei meus conhecimentos de ilustração no Instituto ABRA e atualmente estou cursando Licenciatura em Artes Visuais.</p>
+</div>
+
+</div>
+
+<!-- Rodapé -->
+<footer>
+    <p>&copy; 2024 Minha Página Inicial. Todos os direitos reservados.</p>
+    <p>
+        <a href="mailto:akitoevang@gmail.com">akitoevang@gmail.com</a> |
+        <a href="https://www.behance.net/akillevangel" target="_blank">Behance</a> |
+        WhatsApp: <a href="https://wa.me/5511977504810" target="_blank">11 97750-4810</a>
+    </p>
+</footer>
+
+<!-- Ícone no canto inferior direito -->
+<div id="corner-icon">
+    <a href="https://www.behance.net/akillevangel" target="_blank">
+        <img id="icon-img" src="https://lh3.googleusercontent.com/pw/AP1GczNyCufAHN6coi_jMcXAaEMYS06W4OrzaHi_iNPOrUoo1symclH07IgR-JnXcecCpi3RPdI2yAzaYMazuuB7oGMoErLjzG1eETOG88400xP2gkVz4IKknB1P4ScRQReYH76GKjqu-HTAE2rTczO-QkvS=w404-h928-s-no-gm?authuser=2" alt="Instagram">
+    </a>
+</div>
+
+<!-- Script para o efeito parallax -->
+<script>
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
+        const bannerImage = document.querySelector('#banner img');
+        bannerImage.style.transform = 'translateY(-' + scrollPosition * 0.2 + 'px)';
+    });
+</script>
+
+<!-- Script para controlar o volume do vídeo -->
+<script>
+    function onYouTubeIframeAPIReady() {
+        var player;
+        player = new YT.Player('existing-iframe-example', {
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    function onPlayerReady(event) {
+        event.target.setVolume(40); // Define o volume do vídeo para 40%
+    }
+
+    // Carrega a API do YouTube de forma assíncrona
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+</script>
+
+<!-- Estilos adicionais -->
+<style>
+    #corner-icon {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+    }
+    #icon-img {
+        width: 80px; /* Ajuste a largura conforme necessário */
+        height: auto; /* Mantém a proporção original */
+        border-radius: 50%; /* Torna a imagem circular */
+        opacity: 0.3; /* Define a opacidade inicial */
+        transition: opacity 0.3s; /* Adiciona uma transição suave */
+    }
+    #icon-img:hover {
+        opacity: 0.9; /* Define a opacidade ao passar o mouse */
+    }
+</style>
+
+</body>
+</html>
